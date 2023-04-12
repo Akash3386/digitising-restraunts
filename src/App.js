@@ -1,23 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+// import logo from './logo.svg';
+// import './App.css';
+import React,{useState, useEffect} from 'react';
+import OrderedProduct from './Components/OrderedProduct';
+import Order from './Components/Order';
+// import ListOrder from './Components/ListOrder';
+// import Table from './Components/Table'
 
 function App() {
+
+  const [enteredData,setEnteredData] = useState('')
+
+  const getDataHandler = (data) => {
+      setEnteredData(data)
+  }
+
+
+
+  useEffect( () => {
+  
+      <OrderedProduct detail={enteredData}></OrderedProduct>
+    
+  },[enteredData])
+  
+  
+
+  
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div >
+      
+      <Order onSaveOrderedData={getDataHandler}></Order>
+      <section>
+         <h2>Products</h2>
+         {enteredData && <OrderedProduct detail={enteredData}></OrderedProduct>}
+         <h4>The total worth of product is Rs {enteredData.price}</h4>
+      </section>
     </div>
   );
 }
