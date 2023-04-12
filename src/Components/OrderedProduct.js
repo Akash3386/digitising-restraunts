@@ -3,6 +3,7 @@ import React from "react";
 const OrderedProduct = (props) => {
 
     const OnDeleteHandle = () => {
+        console.log('jl')
         localStorage.removeItem(props.detail.Id)
     }
 
